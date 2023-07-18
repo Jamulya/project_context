@@ -4,7 +4,11 @@ import CartContext from './context'
 import { Link } from 'react-router-dom'
 
 const NavBar = () => {
-    const {items} = useContext((CartContext))
+    const {items,  ChangeTheme} = useContext((CartContext))
+
+    const ChangeToDarkMode = () => {
+      ChangeTheme()
+    }
   return (
     <div className='navbar'>
         <Link to='/homepage'> <span>Home</span></Link>
@@ -12,13 +16,14 @@ const NavBar = () => {
         <Link to='/contacts'> <span>Contacts</span></Link>
         <Link to='/userPage'> <span>User Page</span></Link>
         <Link to={'/'}> <span>MacBook</span></Link>
-        <Link to='/card'> <span>Card</span></Link>
-
+        <Link to='/checkout'> 
         <div className='cart'>
         <AiFillShopping/>
             <p>{items.length}</p>
 
         </div>
+          </Link>
+          <button onClick={ChangeToDarkMode}>Dark mode</button>
 
     </div>
   )
